@@ -46,28 +46,27 @@ color1 ffffff
 color2 ffffff
 
 TEXT
-${color #ddaa00}Bitcoin (BTC) $alignr \#${execi 300 cat ./tmp/bitcoin | jq '.[0].rank' -r }${color}
+${color #ddaa00}Bitcoin (BTC) $alignr \#${execi 300 cat ./tmp/bitcoin | jq '.[0].rank' -r }${color}${execi 30 python ./crypto.py }
 1h: ${execi 300 cat ./tmp/bitcoin | jq '.[0].percent_change_1h' -r }%$alignr 24h: ${execi 300 cat ./tmp/bitcoin | jq '.[0].percent_change_24h' -r }%
 $$ ${execi 300 cat ./tmp/bitcoin | jq '.[0].price_usd' -r | awk '{printf "%.2f\n",$1}' } USD${color}
 $$ ${execi 300 cat ./tmp/bitcoin | jq '.[0].price_brl' -r | awk '{printf "%.2f\n",$1}' } BRL
-Last updated: ${execi 300 cat ./tmp/bitcoin | jq '.[0].last_updated' -r | date +%H:%M:%S }
+Last updated: ${execi 10 cat ./tmp/bitcoin | jq '.[0].last_updated' -r | date +%H:%M:%S }
 ${color #ddaa00}RaiBlocks (XRB) $alignr \#${execi 300 cat ./tmp/raiblocks | jq '.[0].rank' -r }${color}
 1h: ${execi 300 cat ./tmp/raiblocks | jq '.[0].percent_change_1h' -r }%$alignr 24h: ${execi 300 cat ./tmp/raiblocks | jq '.[0].percent_change_24h' -r }%
 $$ ${execi 300 cat ./tmp/raiblocks | jq '.[0].price_usd' -r | awk '{printf "%.2f\n",$1}' } USD${color}
 $$ ${execi 300 cat ./tmp/raiblocks | jq '.[0].price_brl' -r | awk '{printf "%.2f\n",$1}' } BRL
 ${execi 300 cat ./tmp/raiblocks | jq '.[0].price_btc' -r } BTC
-Last updated: ${execi 300 cat ./tmp/raiblocks | jq '.[0].last_updated' -r | date +%H:%M:%S }
+Last updated: ${execi 10 cat ./tmp/raiblocks | jq '.[0].last_updated' -r | date +%H:%M:%S }
 ${color #ddaa00}Request (REQ) $alignr \#${execi 300 cat ./tmp/request-network | jq '.[0].rank' -r }${color}
 1h: ${execi 300 cat ./tmp/request-network | jq '.[0].percent_change_1h' -r }%$alignr 24h: ${execi 300 cat ./tmp/request-network | jq '.[0].percent_change_24h' -r }%
 $$ ${execi 300 cat ./tmp/request-network | jq '.[0].price_usd' -r | awk '{printf "%.2f\n",$1}' } USD${color}
 $$ ${execi 300 cat ./tmp/request-network | jq '.[0].price_brl' -r | awk '{printf "%.2f\n",$1}' } BRL
 ${execi 300 cat ./tmp/request-network | jq '.[0].price_btc' -r } BTC
-Last updated: ${execi 300 cat ./tmp/request-network | jq '.[0].last_updated' -r | date +%H:%M:%S }
+Last updated: ${execi 10 cat ./tmp/request-network | jq '.[0].last_updated' -r | date +%H:%M:%S }
 ${color #ddaa00}Xtrabytes (XBY) $alignr \#${execi 300 cat ./tmp/xtrabytes | jq '.[0].rank' -r }${color}
 1h: ${execi 300 cat ./tmp/xtrabytes | jq '.[0].percent_change_1h' -r }%$alignr 24h: ${execi 300 cat ./tmp/xtrabytes | jq '.[0].percent_change_24h' -r }%
 $$ ${execi 300 cat ./tmp/xtrabytes | jq '.[0].price_usd' -r | awk '{printf "%.2f\n",$1}' } USD${color}
 $$ ${execi 300 cat ./tmp/xtrabytes | jq '.[0].price_brl' -r | awk '{printf "%.2f\n",$1}' } BRL
 ${execi 300 cat ./tmp/xtrabytes | jq '.[0].price_btc' -r } BTC
-Last updated: ${execi 300 cat ./tmp/xtrabytes | jq '.[0].last_updated' -r | date +%H:%M:%S }
+Last updated: ${execi 10 cat ./tmp/xtrabytes | jq '.[0].last_updated' -r | date +%H:%M:%S }
 ${image ./images/BG.png -p -15,-11 -s 300x360}
-${exec python ./crypto.py }
